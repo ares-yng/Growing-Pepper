@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhmv7a7aqa7k"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/plant.gd" id="1_84fwn"]
+[ext_resource type="Texture2D" uid="uid://o11k80pk2kff" path="res://Assets/UI/highlightTile.png" id="2_eq6jv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjiwp"]
+resource_local_to_scene = true
+size = Vector2(32, 32)
+
+[node name="Plant" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_84fwn")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bjiwp")
+metadata/_edit_lock_ = true
+
+[node name="Highlight" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_eq6jv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+hframes = 2
+metadata/_edit_lock_ = true

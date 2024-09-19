@@ -1,0 +1,55 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://b1mny86xbbnar"]
+
+[ext_resource type="Texture2D" uid="uid://dk8t5udjnjlh0" path="res://Assets/Ingame/Equips/axe.png" id="1_r0q81"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y75kg"]
+atlas = ExtResource("1_r0q81")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4ck4"]
+atlas = ExtResource("1_r0q81")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypm4h"]
+atlas = ExtResource("1_r0q81")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j48ql"]
+atlas = ExtResource("1_r0q81")
+region = Rect2(0, 0, 128, 128)
+
+[resource]
+resource_name = "axe"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y75kg")
+}],
+"loop": true,
+"name": &"idleD",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4ck4")
+}],
+"loop": true,
+"name": &"idleL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypm4h")
+}],
+"loop": true,
+"name": &"idleR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j48ql")
+}],
+"loop": true,
+"name": &"idleU",
+"speed": 5.0
+}]

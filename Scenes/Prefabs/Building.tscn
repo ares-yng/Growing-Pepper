@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://btjhynr1s35g7"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/building.gd" id="1_e4pjv"]
+[ext_resource type="Texture2D" uid="uid://dshvo7ch8xvo" path="res://Assets/Ingame/Environment/buildingA.png" id="2_7ws5o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbtl"]
+size = Vector2(24, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja1gl"]
+size = Vector2(144, 32)
+
+[node name="Building_0;0;0" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_e4pjv")
+
+[node name="Door" type="CollisionShape2D" parent="."]
+position = Vector2(4, -36)
+shape = SubResource("RectangleShape2D_uxbtl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Door"]
+position = Vector2(-4, -36)
+texture = ExtResource("2_7ws5o")
+metadata/_edit_lock_ = true
+
+[node name="Body" type="StaticBody2D" parent="Door/Sprite2D"]
+position = Vector2(0, 32)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Sprite2D/Body"]
+shape = SubResource("RectangleShape2D_ja1gl")
+metadata/_edit_lock_ = true

@@ -1,0 +1,29 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dbd5k0ihu58t3"]
+
+[ext_resource type="Texture2D" uid="uid://6mlmhgs5lx6y" path="res://Assets/Ingame/Plants/wood.png" id="1_k4er2"]
+[ext_resource type="Texture2D" uid="uid://bs0dx5snu8tlo" path="res://Assets/Ingame/Plants/placeholder.png" id="2_1ksix"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_784rx"]
+atlas = ExtResource("2_1ksix")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epgsj"]
+atlas = ExtResource("2_1ksix")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k4er2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_784rx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epgsj")
+}],
+"loop": true,
+"name": &"sprites",
+"speed": 5.0
+}]

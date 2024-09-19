@@ -1,0 +1,26 @@
+npc code: 
+database parsing functions
+npc id 
+npc dialogue progress id 
+player plot progress id
+
+npc database: 
+1 dialogue database
+- dialogue id (not unique)
+- npc id that the dialogue is initiated/monitored by (not unique)
+- story progression value/id given upon completion (unique)
+- next dialogue id
+- script stuff
+1 npc dialogue progress database
+
+how to know what an npc should say?
+- needs npc dialogue progress. if there are multiple entries with the same progress tag, it means it should be random between them
+
+scenarios:
+-> player interacts with an npc 
+-> npc knows what its next dialogue should be
+if first time talked?
+if player talked before?
+if player hasn't met new requirements for story?
+if npc has a quest?
+-> npc loads dialogue

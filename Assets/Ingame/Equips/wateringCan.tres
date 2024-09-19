@@ -1,0 +1,55 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bhsi7pqcjwq7p"]
+
+[ext_resource type="Texture2D" uid="uid://mecn83e3oogy" path="res://Assets/Ingame/Equips/wateringCan.png" id="1_46467"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed42b"]
+atlas = ExtResource("1_46467")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfqsp"]
+atlas = ExtResource("1_46467")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bjhd"]
+atlas = ExtResource("1_46467")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqrsv"]
+atlas = ExtResource("1_46467")
+region = Rect2(0, 0, 128, 128)
+
+[resource]
+resource_name = "wateringCan"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed42b")
+}],
+"loop": true,
+"name": &"idleD",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfqsp")
+}],
+"loop": true,
+"name": &"idleL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bjhd")
+}],
+"loop": true,
+"name": &"idleR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqrsv")
+}],
+"loop": true,
+"name": &"idleU",
+"speed": 5.0
+}]

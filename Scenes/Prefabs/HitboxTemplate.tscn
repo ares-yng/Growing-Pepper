@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://bhewrtcn6m84c"]
+
+[ext_resource type="SpriteFrames" uid="uid://biw0q4p5cogoi" path="res://Assets/Ingame/Characters/pepper.tres" id="1_06b7s"]
+[ext_resource type="Script" path="res://Scenes/Scripts/hitbox.gd" id="1_ijawb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_715q5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymb3y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08umm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0xmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8kd7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3g3wt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x07l0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhfnh"]
+
+[node name="Hitboxes" type="Node2D"]
+script = ExtResource("1_ijawb")
+
+[node name="Up" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="f1" type="CollisionShape2D" parent="Up"]
+position = Vector2(50, -57)
+scale = Vector2(2, 2.5)
+shape = SubResource("RectangleShape2D_715q5")
+disabled = true
+
+[node name="f2" type="CollisionShape2D" parent="Up"]
+position = Vector2(0, -63)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_ymb3y")
+disabled = true
+
+[node name="Down" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="f1" type="CollisionShape2D" parent="Down"]
+position = Vector2(-49, -57)
+scale = Vector2(2, 2.5)
+shape = SubResource("RectangleShape2D_08umm")
+disabled = true
+
+[node name="f2" type="CollisionShape2D" parent="Down"]
+position = Vector2(0, -18)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_e0xmo")
+disabled = true
+
+[node name="Left" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="f1" type="CollisionShape2D" parent="Left"]
+position = Vector2(-20, -60)
+scale = Vector2(2, 2.5)
+shape = SubResource("RectangleShape2D_h8kd7")
+disabled = true
+
+[node name="f2" type="CollisionShape2D" parent="Left"]
+position = Vector2(-38, -41)
+scale = Vector2(5, 6)
+shape = SubResource("RectangleShape2D_3g3wt")
+disabled = true
+
+[node name="Right" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="f1" type="CollisionShape2D" parent="Right"]
+position = Vector2(-28, -63)
+scale = Vector2(2, 2.5)
+shape = SubResource("RectangleShape2D_x07l0")
+disabled = true
+
+[node name="f2" type="CollisionShape2D" parent="Right"]
+position = Vector2(27, -41)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_xhfnh")
+disabled = true
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -33)
+sprite_frames = ExtResource("1_06b7s")
+animation = &"slash"
+frame = 5

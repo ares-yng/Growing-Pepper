@@ -1,0 +1,495 @@
+[gd_scene load_steps=19 format=3 uid="uid://d4nf13w6newcp"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/game_controller.gd" id="1_2djny"]
+[ext_resource type="PackedScene" uid="uid://6qe7ujvd8sao" path="res://Scenes/Maps/main_menu.tscn" id="2_mhobl"]
+[ext_resource type="Script" path="res://Scenes/Scripts/dialogue.gd" id="2_sfa6c"]
+[ext_resource type="Script" path="res://Scenes/Scripts/pauser.gd" id="3_au6th"]
+[ext_resource type="Texture2D" uid="uid://cao5l400p4tmu" path="res://Assets/UI/pause_bg.png" id="3_fiqrp"]
+[ext_resource type="Texture2D" uid="uid://wji72e3kfy83" path="res://Assets/Portraits/placeholder_neutral.png" id="3_tj4wl"]
+[ext_resource type="Texture2D" uid="uid://ny0miuywhbjd" path="res://Assets/Portraits/Pepper_neutral.png" id="4_r2maf"]
+[ext_resource type="Texture2D" uid="uid://b5awykupxc2i4" path="res://Assets/UI/textbox_basic.png" id="4_r083b"]
+[ext_resource type="FontFile" uid="uid://xhactwxmt67r" path="res://Assets/UI/8bit/8bit.ttf" id="5_5xnkb"]
+[ext_resource type="Texture2D" uid="uid://cvbgfj66y215i" path="res://Assets/UI/journal_bg.png" id="8_w7kbi"]
+[ext_resource type="Script" path="res://Scenes/Scripts/pauser_pages.gd" id="9_gov6y"]
+[ext_resource type="Script" path="res://Scenes/Scripts/clock.gd" id="9_phq5p"]
+[ext_resource type="Texture2D" uid="uid://bsynixfm884f5" path="res://Assets/UI/small_pepper1.png" id="10_7usqm"]
+[ext_resource type="Texture2D" uid="uid://cqbk0dfq45ckf" path="res://Assets/UI/small_pepper2.png" id="11_awf2v"]
+[ext_resource type="Texture2D" uid="uid://4w0qjenls7bo" path="res://Assets/UI/small_pepper3.png" id="12_51y4d"]
+[ext_resource type="Texture2D" uid="uid://btp6rl3ibs1wi" path="res://Assets/UI/small_pepper4.png" id="13_n45dc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vc2v6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m3pim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_7usqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_awf2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_51y4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_n45dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_n45dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_51y4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_awf2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7usqm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GameController" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_2djny")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pauser" type="Node2D" parent="CanvasLayer"]
+process_mode = 3
+position = Vector2(480, 270)
+script = ExtResource("3_au6th")
+
+[node name="JournalBacking" type="Sprite2D" parent="CanvasLayer/Pauser"]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("8_w7kbi")
+
+[node name="SaveLoad" type="Node2D" parent="CanvasLayer/Pauser"]
+process_mode = 4
+visible = false
+script = ExtResource("9_gov6y")
+
+[node name="LeftTitle" type="Node2D" parent="CanvasLayer/Pauser/SaveLoad"]
+
+[node name="Label" type="Label" parent="CanvasLayer/Pauser/SaveLoad/LeftTitle"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -26.0
+offset_right = 156.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(156, 26)
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "Pepper's Journal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftContent" type="Node2D" parent="CanvasLayer/Pauser/SaveLoad"]
+
+[node name="MouseReference" type="Node2D" parent="CanvasLayer/Pauser/SaveLoad/LeftContent"]
+
+[node name="Label" type="Label" parent="CanvasLayer/Pauser/SaveLoad/LeftContent"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -104.0
+offset_right = 90.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../Label2")
+focus_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Entry 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Pauser/SaveLoad/LeftContent/Label"]
+position = Vector2(90, 54)
+scale = Vector2(4.7, 1.2)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Pauser/SaveLoad/LeftContent/Label/Area2D"]
+shape = SubResource("RectangleShape2D_vc2v6")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Pauser/SaveLoad/LeftContent"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -54.0
+offset_right = 90.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Label")
+focus_neighbor_bottom = NodePath("../Label3")
+focus_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Entry 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Pauser/SaveLoad/LeftContent/Label2"]
+position = Vector2(90, 54)
+scale = Vector2(4.7, 1.2)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Pauser/SaveLoad/LeftContent/Label2/Area2D"]
+shape = SubResource("RectangleShape2D_vc2v6")
+
+[node name="Label3" type="Label" parent="CanvasLayer/Pauser/SaveLoad/LeftContent"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -4.0
+offset_right = 90.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Label2")
+focus_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Entry 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Pauser/SaveLoad/LeftContent/Label3"]
+position = Vector2(90, 54)
+scale = Vector2(4.7, 1.2)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Pauser/SaveLoad/LeftContent/Label3/Area2D"]
+shape = SubResource("RectangleShape2D_vc2v6")
+
+[node name="FocusIndicator" type="AnimatedSprite2D" parent="CanvasLayer/Pauser/SaveLoad/LeftContent"]
+position = Vector2(-12, 14.75)
+sprite_frames = SubResource("SpriteFrames_m3pim")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="RightTitle" type="Node2D" parent="CanvasLayer/Pauser/SaveLoad"]
+
+[node name="Label" type="Label" parent="CanvasLayer/Pauser/SaveLoad/RightTitle"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -54.0
+offset_right = 172.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = -9
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightContent" type="Node2D" parent="CanvasLayer/Pauser/SaveLoad"]
+
+[node name="Label" type="Label" parent="CanvasLayer/Pauser/SaveLoad/RightContent"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -54.0
+offset_right = 172.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = -9
+theme_override_font_sizes/font_size = 32
+
+[node name="Save" type="Label" parent="CanvasLayer/Pauser/SaveLoad/RightContent"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -4.0
+offset_right = -10.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath(".")
+focus_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Pauser/SaveLoad/RightContent/Save"]
+position = Vector2(90, 54)
+scale = Vector2(4.7, 1.2)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Pauser/SaveLoad/RightContent/Save/Area2D"]
+shape = SubResource("RectangleShape2D_vc2v6")
+
+[node name="Load" type="Label" parent="CanvasLayer/Pauser/SaveLoad/RightContent"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -4.0
+offset_right = 190.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath(".")
+focus_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Load"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Pauser/SaveLoad/RightContent/Load"]
+position = Vector2(90, 54)
+scale = Vector2(4.7, 1.2)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Pauser/SaveLoad/RightContent/Load/Area2D"]
+shape = SubResource("RectangleShape2D_vc2v6")
+
+[node name="Quests" type="Node2D" parent="CanvasLayer/Pauser"]
+process_mode = 4
+visible = false
+
+[node name="Label" type="Label" parent="CanvasLayer/Pauser/Quests"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -47.0
+offset_right = 133.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "QUESTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Pauser/Quests"]
+offset_left = -88.0
+offset_top = -1.0
+offset_right = 92.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 32
+text = "Q to unpause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToDo" type="Node2D" parent="CanvasLayer/Pauser"]
+process_mode = 4
+visible = false
+
+[node name="Label" type="Label" parent="CanvasLayer/Pauser/ToDo"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -47.0
+offset_right = 133.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "TO-DO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Pauser/ToDo"]
+offset_left = -88.0
+offset_top = -1.0
+offset_right = 92.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 32
+text = "T to unpause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Map" type="Node2D" parent="CanvasLayer/Pauser"]
+process_mode = 4
+visible = false
+
+[node name="Label" type="Label" parent="CanvasLayer/Pauser/Map"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -47.0
+offset_right = 133.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "MAP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Pauser/Map"]
+offset_left = -88.0
+offset_top = -1.0
+offset_right = 92.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 32
+text = "M to unpause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DevTools" type="Node2D" parent="CanvasLayer/Pauser"]
+process_mode = 4
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Pauser/DevTools"]
+texture = ExtResource("3_fiqrp")
+
+[node name="Label" type="Label" parent="CanvasLayer/Pauser/DevTools"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -47.0
+offset_right = 133.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "DEVTOOLS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Pauser/DevTools"]
+offset_left = -88.0
+offset_top = -1.0
+offset_right = 92.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 32
+text = "F2 to unpause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pausable" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Pausable"]
+layer = 11
+
+[node name="Dialogue" type="Node2D" parent="Pausable/CanvasLayer"]
+position = Vector2(480, 430)
+script = ExtResource("2_sfa6c")
+
+[node name="Speakers" type="Node2D" parent="Pausable/CanvasLayer/Dialogue"]
+visible = false
+
+[node name="Left2" type="Sprite2D" parent="Pausable/CanvasLayer/Dialogue/Speakers"]
+position = Vector2(-196, 8)
+scale = Vector2(2, 2)
+texture = ExtResource("3_tj4wl")
+
+[node name="Left1" type="Sprite2D" parent="Pausable/CanvasLayer/Dialogue/Speakers"]
+position = Vector2(-166, 22)
+scale = Vector2(2, 2)
+texture = ExtResource("4_r2maf")
+
+[node name="Right2" type="Sprite2D" parent="Pausable/CanvasLayer/Dialogue/Speakers"]
+position = Vector2(201, 5)
+scale = Vector2(2, 2)
+texture = ExtResource("3_tj4wl")
+
+[node name="Right1" type="Sprite2D" parent="Pausable/CanvasLayer/Dialogue/Speakers"]
+position = Vector2(171, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("3_tj4wl")
+
+[node name="Textbox" type="Node2D" parent="Pausable/CanvasLayer/Dialogue"]
+visible = false
+position = Vector2(0, 50)
+
+[node name="Basic" type="Sprite2D" parent="Pausable/CanvasLayer/Dialogue/Textbox"]
+scale = Vector2(0.4, 0.2)
+texture = ExtResource("4_r083b")
+
+[node name="Text" type="Label" parent="Pausable/CanvasLayer/Dialogue/Textbox"]
+offset_left = -136.0
+offset_top = -32.0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_constants/line_spacing = -8
+theme_override_font_sizes/font_size = 32
+text = "text text text text text text text text text text text text text text text text text"
+autowrap_mode = 2
+text_overrun_behavior = 3
+
+[node name="Next" type="Label" parent="Pausable/CanvasLayer/Dialogue/Textbox"]
+visible = false
+offset_left = 168.0
+offset_top = 16.0
+offset_right = 208.0
+offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("5_5xnkb")
+theme_override_font_sizes/font_size = 16
+text = "> D"
+
+[node name="Clock" type="Node2D" parent="Pausable/CanvasLayer"]
+visible = false
+position = Vector2(96, 464)
+script = ExtResource("9_phq5p")
+
+[node name="Time" type="Label" parent="Pausable/CanvasLayer/Clock"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.5
+offset_right = 20.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="main_menu" parent="Pausable" instance=ExtResource("2_mhobl")]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctj565tpwyeif"]
+
+[ext_resource type="Texture2D" uid="uid://yo2exrwcgwuw" path="res://Assets/UI/inventory_slot.png" id="1_weyc0"]
+[ext_resource type="Script" path="res://Scenes/Scripts/slot.gd" id="2_nuch1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27vlo"]
+size = Vector2(32, 32)
+
+[node name="Slot1" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_nuch1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_weyc0")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_27vlo")
+
+[connection signal="mouse_entered" from="." to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,358 @@
+[gd_scene load_steps=21 format=3 uid="uid://6qe7ujvd8sao"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/main_menu.gd" id="1_o2svr"]
+[ext_resource type="Texture2D" uid="uid://48ng0dpwd0hu" path="res://Assets/UI/Title Screen.png" id="2_5sl1d"]
+[ext_resource type="Texture2D" uid="uid://bsynixfm884f5" path="res://Assets/UI/small_pepper1.png" id="2_drsay"]
+[ext_resource type="Script" path="res://Scenes/Scripts/menu_options.gd" id="3_12nmu"]
+[ext_resource type="Texture2D" uid="uid://cqbk0dfq45ckf" path="res://Assets/UI/small_pepper2.png" id="3_f8pdi"]
+[ext_resource type="Texture2D" uid="uid://4w0qjenls7bo" path="res://Assets/UI/small_pepper3.png" id="4_fjrqa"]
+[ext_resource type="Texture2D" uid="uid://3aqibg4aecwc" path="res://Assets/UI/title.png" id="4_qr6ah"]
+[ext_resource type="Texture2D" uid="uid://c0tdaofceclcl" path="res://Assets/UI/pepper.png" id="5_klqxe"]
+[ext_resource type="Texture2D" uid="uid://btp6rl3ibs1wi" path="res://Assets/UI/small_pepper4.png" id="5_q47fx"]
+[ext_resource type="Texture2D" uid="uid://dq02my0ft25e8" path="res://Assets/UI/mainMenu_deleteBG.png" id="12_scm01"]
+[ext_resource type="Script" path="res://Scenes/Scripts/player_select.gd" id="13_ps44r"]
+[ext_resource type="Texture2D" uid="uid://m83bvhjd0fo5" path="res://Assets/UI/mainMenu_optionBG.png" id="14_27876"]
+[ext_resource type="Script" path="res://Scenes/Scripts/new_player.gd" id="15_5gsic"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yjixe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_drsay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f8pdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fjrqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q47fx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q47fx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fjrqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f8pdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_drsay")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y13w"]
+size = Vector2(99.875, 29.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab28e"]
+size = Vector2(24, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnuw5"]
+size = Vector2(100, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tun2g"]
+size = Vector2(42, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07q8o"]
+size = Vector2(42, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbgpp"]
+size = Vector2(100, 30)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_o2svr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5sl1d")
+
+[node name="Left" type="Node2D" parent="."]
+position = Vector2(-160, 0)
+
+[node name="MenuOptions" type="VBoxContainer" parent="Left"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 0.5
+offset_right = -8.0
+offset_bottom = 70.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+script = ExtResource("3_12nmu")
+
+[node name="FocusIndicator" type="AnimatedSprite2D" parent="Left/MenuOptions"]
+position = Vector2(-12, 14.75)
+sprite_frames = SubResource("SpriteFrames_yjixe")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="Play" type="TextureRect" parent="Left/MenuOptions"]
+layout_mode = 2
+focus_mode = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("14_27876")
+
+[node name="Area2D" type="Area2D" parent="Left/MenuOptions/Play"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left/MenuOptions/Play/Area2D"]
+position = Vector2(50.0625, 15)
+shape = SubResource("RectangleShape2D_0y13w")
+
+[node name="Label" type="Label" parent="Left/MenuOptions/Play"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 29.0
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="TextureRect" parent="Left/MenuOptions"]
+layout_mode = 2
+focus_mode = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("14_27876")
+
+[node name="Area2D" type="Area2D" parent="Left/MenuOptions/Options"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left/MenuOptions/Options/Area2D"]
+position = Vector2(50, 15.25)
+shape = SubResource("RectangleShape2D_0y13w")
+
+[node name="Label" type="Label" parent="Left/MenuOptions/Options"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 29.0
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Node2D" parent="."]
+position = Vector2(160, 0)
+
+[node name="TitleScreen" type="VBoxContainer" parent="Right"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -74.5
+offset_right = 75.0
+offset_bottom = 74.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+
+[node name="Title" type="TextureRect" parent="Right/TitleScreen"]
+layout_mode = 2
+texture = ExtResource("4_qr6ah")
+
+[node name="Icon" type="TextureRect" parent="Right/TitleScreen"]
+layout_mode = 2
+texture = ExtResource("5_klqxe")
+stretch_mode = 5
+
+[node name="PlayerSelect" type="VBoxContainer" parent="Right"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_ps44r")
+
+[node name="Player0" type="TextureRect" parent="Right/PlayerSelect"]
+layout_mode = 2
+texture = ExtResource("14_27876")
+
+[node name="Label" type="Label" parent="Right/PlayerSelect/Player0"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 17.0
+text = "New Player"
+
+[node name="Delete" type="TextureRect" parent="Right/PlayerSelect/Player0"]
+visible = false
+layout_mode = 0
+offset_left = 106.0
+offset_top = 1.0
+offset_right = 136.0
+offset_bottom = 31.0
+texture = ExtResource("12_scm01")
+
+[node name="Area2D" type="Area2D" parent="Right/PlayerSelect/Player0/Delete"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/PlayerSelect/Player0/Delete/Area2D"]
+position = Vector2(15, 14.5)
+shape = SubResource("RectangleShape2D_ab28e")
+
+[node name="Area2D" type="Area2D" parent="Right/PlayerSelect/Player0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/PlayerSelect/Player0/Area2D"]
+position = Vector2(50, 15)
+shape = SubResource("RectangleShape2D_gnuw5")
+
+[node name="Player2" type="TextureRect" parent="Right/PlayerSelect"]
+layout_mode = 2
+texture = ExtResource("14_27876")
+
+[node name="Label" type="Label" parent="Right/PlayerSelect/Player2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 17.0
+text = "New Player"
+
+[node name="Delete" type="TextureRect" parent="Right/PlayerSelect/Player2"]
+visible = false
+layout_mode = 0
+offset_left = 106.0
+offset_right = 136.0
+offset_bottom = 30.0
+texture = ExtResource("12_scm01")
+
+[node name="Area2D" type="Area2D" parent="Right/PlayerSelect/Player2/Delete"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/PlayerSelect/Player2/Delete/Area2D"]
+position = Vector2(15, 14.5)
+shape = SubResource("RectangleShape2D_ab28e")
+
+[node name="Area2D" type="Area2D" parent="Right/PlayerSelect/Player2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/PlayerSelect/Player2/Area2D"]
+position = Vector2(50, 15)
+shape = SubResource("RectangleShape2D_gnuw5")
+
+[node name="Player3" type="TextureRect" parent="Right/PlayerSelect"]
+layout_mode = 2
+texture = ExtResource("14_27876")
+
+[node name="Label" type="Label" parent="Right/PlayerSelect/Player3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 17.0
+text = "New Player"
+
+[node name="Delete" type="TextureRect" parent="Right/PlayerSelect/Player3"]
+visible = false
+layout_mode = 0
+offset_left = 106.0
+offset_right = 136.0
+offset_bottom = 30.0
+texture = ExtResource("12_scm01")
+
+[node name="Area2D" type="Area2D" parent="Right/PlayerSelect/Player3/Delete"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/PlayerSelect/Player3/Delete/Area2D"]
+position = Vector2(15, 14.5)
+shape = SubResource("RectangleShape2D_ab28e")
+
+[node name="Area2D" type="Area2D" parent="Right/PlayerSelect/Player3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/PlayerSelect/Player3/Area2D"]
+position = Vector2(50, 15)
+shape = SubResource("RectangleShape2D_gnuw5")
+
+[node name="ConfirmationScreen" type="VBoxContainer" parent="Right"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_5gsic")
+
+[node name="Label" type="Label" parent="Right/ConfirmationScreen"]
+layout_mode = 2
+theme_override_constants/line_spacing = -12
+theme_override_font_sizes/font_size = 32
+text = "?
+?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Right/ConfirmationScreen"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Right/ConfirmationScreen/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Yes"
+
+[node name="Area2D" type="Area2D" parent="Right/ConfirmationScreen/HBoxContainer/Label"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/ConfirmationScreen/HBoxContainer/Label/Area2D"]
+position = Vector2(20, 17)
+shape = SubResource("RectangleShape2D_tun2g")
+
+[node name="Label2" type="Label" parent="Right/ConfirmationScreen/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "  No  "
+
+[node name="Area2D" type="Area2D" parent="Right/ConfirmationScreen/HBoxContainer/Label2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/ConfirmationScreen/HBoxContainer/Label2/Area2D"]
+position = Vector2(25, 17)
+shape = SubResource("RectangleShape2D_07q8o")
+
+[node name="Options" type="VBoxContainer" parent="Right"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Back" type="Area2D" parent="Right"]
+visible = false
+position = Vector2(96, 152)
+
+[node name="Sprite2D" type="Sprite2D" parent="Right/Back"]
+texture = ExtResource("14_27876")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/Back"]
+shape = SubResource("RectangleShape2D_sbgpp")
+
+[node name="Label" type="Label" parent="Right/Back"]
+offset_left = -48.0
+offset_top = -16.0
+offset_right = 48.0
+offset_bottom = 16.0
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="input_event" from="Left/MenuOptions/Play/Area2D" to="Left/MenuOptions" method="_on_area_2d_input_event_play"]
+[connection signal="mouse_entered" from="Left/MenuOptions/Play/Area2D" to="Left/MenuOptions" method="_on_area_2d_mouse_entered_play"]
+[connection signal="input_event" from="Left/MenuOptions/Options/Area2D" to="Left/MenuOptions" method="_on_area_2d_input_event_options"]
+[connection signal="mouse_entered" from="Left/MenuOptions/Options/Area2D" to="Left/MenuOptions" method="_on_area_2d_mouse_entered_options"]
+[connection signal="input_event" from="Right/PlayerSelect/Player0/Delete/Area2D" to="Right/PlayerSelect" method="_on_delete_player0_input_event"]
+[connection signal="input_event" from="Right/PlayerSelect/Player0/Area2D" to="Right/PlayerSelect" method="_on_player0_input_event"]
+[connection signal="input_event" from="Right/PlayerSelect/Player2/Delete/Area2D" to="Right/PlayerSelect" method="_on_delete_player1_input_event"]
+[connection signal="input_event" from="Right/PlayerSelect/Player2/Area2D" to="Right/PlayerSelect" method="_on_player1_input_event"]
+[connection signal="input_event" from="Right/PlayerSelect/Player3/Delete/Area2D" to="Right/PlayerSelect" method="_on_delete_player2_input_event"]
+[connection signal="input_event" from="Right/PlayerSelect/Player3/Area2D" to="Right/PlayerSelect" method="_on_player2_input_event"]
+[connection signal="input_event" from="Right/ConfirmationScreen/HBoxContainer/Label/Area2D" to="Right/ConfirmationScreen" method="_on_accept_input_event"]
+[connection signal="input_event" from="Right/ConfirmationScreen/HBoxContainer/Label2/Area2D" to="Right/ConfirmationScreen" method="_on_decline_input_event"]
+[connection signal="input_event" from="Right/Back" to="." method="_on_back_input_event"]

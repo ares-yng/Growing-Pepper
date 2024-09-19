@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c63nu412y3m0h"]
+
+[ext_resource type="Script" path="res://Scenes/testnode.gd" id="1_3xda0"]
+[ext_resource type="Texture2D" uid="uid://b6xegyvb84och" path="res://Assets/Icons/placeholder.png" id="2_uhri5"]
+
+[node name="Root" type="Node2D"]
+
+[node name="Testnode_0" type="Node2D" parent="."]
+script = ExtResource("1_3xda0")
+
+[node name="Sibling" type="Node2D" parent="."]
+
+[node name="sender" type="Sprite2D" parent="."]
+position = Vector2(28, 31)
+texture = ExtResource("2_uhri5")
+
+[node name="receiver" type="Sprite2D" parent="."]
+position = Vector2(62, 30)

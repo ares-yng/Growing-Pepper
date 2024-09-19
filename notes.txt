@@ -1,0 +1,139 @@
+Growing Pepper
+
+next todo: add enemy dummy to hit, add hitbox to slashing
+
+bug: when charge left/right is held and released after hit, it does not start the inputs
+
+opening scene: crafting your tools - "just like they taught me in school!"
+
+remake assets x2 size for more detail
+
+next todo: immobilize player while talking, make quests functional, create an npc and first quest, change player system to check for input -> if dialogue/options are active then do this
+
+replace text with symbols
+
+let player hold items in hotbar
+
+add layer ordering to player sprite
+
+show tile where mouse is hovering
+
+what prefabs to make
+plants - can be targeted by harvest, grows per day cycle if watered
+forageable - can be targeted by harvest, does not grow, it replenishes after x days
+thing - has ai movement and behavior, can be damaged, can damage player, drops something. ex: tree does not move or attack, can be damaged, drops wood. "things the player can physically interact with"
+
+tree to chop for loot/thing prefab
+arrow keys 
+
+using items
+item that is not a tool or weapon: down to put down
+useable/food: up to eat
+tools and weapons:
+hold down: ready/charge
+while holding down: release down = check if has action (if no, drop item) if yes check if combat_effect_id exists (if no, use small (no input)) if yes , press left = skill1 inputs, press right = skill2 inputs, press up = cancel
+while skill inputs: wait until player releases down, then pew pew pew the inputs in order. has individual "resistance to interruption" value where a certain amount of damage can be blocked. melee weapons and tools unleash right away. magic stores the charge (unleashed with left/right press).
+UI: permanently shows left right up down like splatoon dpad, with the instructions changing depending on status. "not ready" "use spell" "charge" "pick up"
+left charge water:
+x x -
+x o -
+right charge water:
+- x x 
+- o x 
+charge water:
+- x -
+- o -
+
+obstacle course festival
+
+add scroll function to hotbar
+drop items by holding and pressing down or putting it outside of ui
+
+use arrow keys to move
+
+if player is rummaging in a chest for a long time, pepper says "wow i have so much stuff, it's great!" (time does not pause in chests)
+
+make closest tiles only in front (right now it can go behind)
+
+document csp database dialogue system
+
+save player facing direction and start off as the idle[direction]
+
+separate dialogue and quests. quests use dialogue but dialogue does not include quests
+
+dialogue system - decide if it should be concurrent or sequential for dialogue text and npc/player movement/cutscenes
+talk to npc: no quest, 1 available quest, 2 available quests, 1 in progress quest, 1 in progress and 1 available quest, completed quests
+dialogue db has id, textbox style (one will be a quest accept/decline), text, default next dialogue id, special next dialogue id (triggered by npc from player behavior), quest requirements id 
+quest requirements has id, type (collect, do, talk, go), target id (person, item, enemy), optional number of targets, optional next additional id, quest turn in target id
+
+requirements to unlock next quest/dialogue: dialogue/quest progress. does it know if a quest has been completed? yes
+
+cutscenes/dialogue options
+*scene unique name
+*step id
+*speak id (links to different database); text, name, icon
+moving character from current position to another
+teleporting character to position
+character animation
+camera effect; move camera, teleport camera, camera shake, camera preset
+load new scene; player spawn location
+next step id
+
+player specific data: npc available quest, queued dialogue
+
+how are quests set up? area checking, 
+quest: target has available quest -> player receives quest -> player completes task(s) -> quest is turned in
+npc has quest - available/in progress/completed
+npc has 
+npc tracks quest progress and tells player about it
+npc saves/loads data on player quest progress
+npc instances quest location/loot/directions/triggers next steps
+player receives quest signals
+player interacts with npc/instanced objects
+
+player specific data: accepted quests, completed quests
+
+what should starting place be
+home base
+todo: change focus indicator to be a space bar below the player and add a glow around the object (attach to object), then fix bugs where the focus indicator does not vanish when player harvests 
+
+what can something drop? multiple things with their own quality, quantity, drop chance
+
+todo: implement planting seed, seed growth, harvest only when plant is ready to be harvested, change database to reflect seed growth stages
+ideas: each plant has (seed, sprout, small, medium, large, ready).png, divided equally between variable growth time
+
+when mouse is over a [menu], it can't move player
+menu priority: save > dialogue > inventory
+
+class:
+database query base class for player
+
+ui work:
+inventory
+quickbar
+options when equipping something (wasd)
+indication when interaction is available
+
+plant (lose seed, put seed in ground)
+interact (water/advance growth)
+harvest (pick, ddr)
+
+click/drag to move
+wasd or arrow keys for actions (down = use equipped down; watering/planting)
+spacebar to interact with environment
+12345 quickbar to switch equip. if slot is empty, empty hand
+
+put stuff into quickbar
+
+database work:
+item has id, display name, inventory icon, game image, recovery value
+item types? 
+inventory has slots that store item id, then the id fetches the icon and stuff
+when loading, pull inventory save file and load into game; do not save to database until game is saving
+start adding items to the list
+
+bug fixes:
+player collision with map
+
+make my own scrollbar..?
+pin squares on a background and slide the bg up or down when selecting squares outside of a "visible" area

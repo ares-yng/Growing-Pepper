@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgi6l5tl3cd8x"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/item.gd" id="1_c76pk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxk77"]
+size = Vector2(32, 32)
+
+[node name="Item" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_c76pk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hxk77")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Quantity" type="Label" parent="."]
+offset_left = -12.0
+offset_right = 20.0
+offset_bottom = 17.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "0"
+vertical_alignment = 1
